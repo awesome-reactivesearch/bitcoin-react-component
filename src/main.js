@@ -1,6 +1,5 @@
 $ = jQuery = require('jquery');
 var React = require('react');
-var Navbar = require("./components/Common/NavBar");
 var SidePanel = require("./components/SidePanel");
 
 
@@ -13,12 +12,10 @@ var App = React.createClass({
 		return (
 			<div className="Main">
 
-			<Navbar/>
+		
 			<div className="container">
 				<SidePanel />
-				<div className="row">
-
-				</div>
+				
 			</div>
 		</div>
 

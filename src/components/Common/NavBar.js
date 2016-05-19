@@ -9,7 +9,7 @@ var Navbar = React.createClass({
                 <img src="images/logo.png" />
                 
               </a>
-              <ul className="nav navbar-nav">
+              <ul className="nav navbar-nav"/>
                 <li><a href="/">Home</a></li>
                 <li><a href="/#authors">Authors</a></li>
                 <li><a href="/#about">About</a></li>

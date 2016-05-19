@@ -8,7 +8,7 @@ var SidePanel = React.createClass({
   render: function() {
     return (
       <div className="side-panel">
-        <div className="col-md-4">
+        <div className="col-md-12">
           <SignInForm />
         </div>
       </div>

@@ -1,0 +1,9 @@
+.small {
+	
+	width:20%;
+	display: inline-block;
+	margin: 0.5%;
+}
+.max{
+	width: 100%;
+}
