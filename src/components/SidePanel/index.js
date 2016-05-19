@@ -15,7 +15,7 @@ var SidePanel = React.createClass({
     )
   }
 
-})
+});
 
 
 module.exports = SidePanel;

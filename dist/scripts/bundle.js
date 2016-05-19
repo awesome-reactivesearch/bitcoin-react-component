@@ -29680,7 +29680,28 @@ var SignIpForm = React.createClass({displayName: "SignIpForm",
       
     )
   )
+  },
+  componentDidMount: function(){
+    $('#select_type').on('change',function(){
+        $('#lowerprice').removeAttr("readonly");
+        $('#upperprice').removeAttr("readonly");
+        $("#upperprice").val("");
+        $("#lowerprice").val("");
+        
+        switch($('#select_type').val()){
+          case "range": break;
+          case "lessthan" : $("#lowerprice").val("0");
+                            $("#lowerprice").prop("readonly", true);
+                            break;
+          case "greaterthan" : $("#upperprice").val("1000");
+                               $("#upperprice").prop("readonly", true);
+                               break;
+          case "fixvalue" : $('#lowerprice').val($('#upperprce').val());
+                            $("#lowerprice").prop("readonly", true);
+        }
+    });
   }
+
 });
 
 
@@ -29704,7 +29725,7 @@ var SidePanel = React.createClass({displayName: "SidePanel",
     )
   }
 
-})
+});
 
 
 module.exports = SidePanel;
