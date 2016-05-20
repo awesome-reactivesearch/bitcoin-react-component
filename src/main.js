@@ -12,17 +12,17 @@ var App = React.createClass({
 		return (
 			<div className="Main">
 
-		
+
 			<div className="container">
 				<SidePanel />
-				
-			</div>
-		</div>
 
+			</div>
+
+</div>
 
 		)
 	}
-})
+});
 
 
 
