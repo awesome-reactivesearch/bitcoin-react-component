@@ -5,7 +5,6 @@ var SignIpForm = React.createClass({
   render : function() {
     return (
       <div className="row max" id="main">
-
       <br/>
       <select id="select_type" className="form-control small">
       <option value="lessthan">Lesser Than</option>
