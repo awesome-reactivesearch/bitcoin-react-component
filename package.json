@@ -9,6 +9,7 @@
   "author": "Girish ramnani",
   "license": "MIT",
   "dependencies": {
+    "appbase-js": "^0.10.7",
     "bootstrap": "^3.3.5",
     "browserify": "^10.2.4",
     "flux": "^2.0.3",

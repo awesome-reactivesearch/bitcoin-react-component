@@ -9,7 +9,7 @@ var SidePanel = React.createClass({
   render: function() {
     return (
 
-        <div className="col-md-12">
+        <div className="">
 
             <div className="row">
               <div className="col-md-6">
