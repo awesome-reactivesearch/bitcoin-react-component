@@ -42333,7 +42333,6 @@ var SignIpForm = React.createClass({displayName: "SignIpForm",
   render : function() {
     return (
       React.createElement("div", {className: "row max", id: "main"}, 
-
       React.createElement("br", null), 
       React.createElement("select", {id: "select_type", className: "form-control small"}, 
       React.createElement("option", {value: "lessthan"}, "Lesser Than"), 
@@ -42344,18 +42343,9 @@ var SignIpForm = React.createClass({displayName: "SignIpForm",
       React.createElement("input", {className: "form-control big", placeholder: "E-mail", name: "email", type: "text"}), React.createElement("br", null), 
       React.createElement("input", {type: "submit", value: "Submit", className: "btn btn-primary"})
       )
-
-
     )
-  },
-  componentDidMount: function(){
-
   }
-
 });
-
-
-
 module.exports = SignIpForm;
 },{"react":204}],232:[function(require,module,exports){
 var React = require("react");
@@ -42447,36 +42437,12 @@ var Stats = React.createClass({displayName: "Stats",
       )
     )
   }
-
-
-
 });
-
-
 module.exports = Stats;
 },{"appbase-js":13,"react":204}],233:[function(require,module,exports){
 var React = require("react");
-
-var chart = React.createClass({displayName: "chart",
-  render : function(){
-    alert("hey");
-    return (
-          React.createElement("div", null, 
-            React.createElement("h1", null, " Hello")
-
-
-          )
-    );
-  }
-});
-module.exports = chart;
-},{"react":204}],234:[function(require,module,exports){
-
-
-var React = require("react");
 var SignInForm = require("./SignIn");
 var Stats = require("./Stats");
-var chart = require("./chart");
 var SidePanel = React.createClass({displayName: "SidePanel",
 
   render: function() {
@@ -42492,40 +42458,25 @@ var SidePanel = React.createClass({displayName: "SidePanel",
       )
     )
   }
-
 });
-
-
 module.exports = SidePanel;
-},{"./SignIn":231,"./Stats":232,"./chart":233,"react":204}],235:[function(require,module,exports){
+},{"./SignIn":231,"./Stats":232,"react":204}],234:[function(require,module,exports){
 $ = jQuery = require('jquery');
 var React = require('react');
 var SidePanel = require("./components/SidePanel");
 
 
 var App = React.createClass({displayName: "App",
-
-
-
 	render : function() {
-
 		return (
 			React.createElement("div", {className: "Main"}, 
-
-
 			React.createElement("div", {className: "container"}, 
-				React.createElement(SidePanel, null)
-
+			React.createElement(SidePanel, null)
 			)
-
-)
-
+			)
 		)
 	}
 });
-
-
-
 React.render(React.createElement(App, null),
- document.getElementById('app'));
-},{"./components/SidePanel":234,"jquery":41,"react":204}]},{},[235]);
+	document.getElementById('app'));
+},{"./components/SidePanel":233,"jquery":41,"react":204}]},{},[234]);
