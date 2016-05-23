@@ -42332,21 +42332,21 @@ var SignIpForm = React.createClass({displayName: "SignIpForm",
 
   render : function() {
     return (
-    React.createElement("div", {className: "row max", id: "main"}, 
+      React.createElement("div", {className: "row max", id: "main"}, 
 
       React.createElement("br", null), 
-          React.createElement("select", {id: "select_type", className: "form-control small"}, 
-              React.createElement("option", {value: "lessthan"}, "Lesser Than"), 
-              React.createElement("option", {value: "greaterthan"}, "Greater Than"), 
-              React.createElement("option", {value: "fixvalue"}, "Fix Value")
-          ), 
-          React.createElement("input", {type: "text", className: "form-control small", placeholder: "Enter Value", id: "upperprice"}), React.createElement("br", null), 
-			    React.createElement("input", {className: "form-control big", placeholder: "E-mail", name: "email", type: "text"}), React.createElement("br", null), 
-          React.createElement("input", {type: "submit", value: "Submit", className: "btn btn-primary"})
-)
+      React.createElement("select", {id: "select_type", className: "form-control small"}, 
+      React.createElement("option", {value: "lessthan"}, "Lesser Than"), 
+      React.createElement("option", {value: "greaterthan"}, "Greater Than"), 
+      React.createElement("option", {value: "fixvalue"}, "Fix Value")
+      ), 
+      React.createElement("input", {type: "text", className: "form-control small", placeholder: "Enter Value", id: "upperprice"}), React.createElement("br", null), 
+      React.createElement("input", {className: "form-control big", placeholder: "E-mail", name: "email", type: "text"}), React.createElement("br", null), 
+      React.createElement("input", {type: "submit", value: "Submit", className: "btn btn-primary"})
+      )
 
 
-  )
+    )
   },
   componentDidMount: function(){
 
@@ -42361,25 +42361,25 @@ module.exports = SignIpForm;
 var React = require("react");
 var Appbase = require("appbase-js");
 var config = {
-    "appname": "jsfiddle-demo",
-    "username": "7eJWHfD4P",
-    "password": "431d9cea-5219-4dfb-b798-f897f3a02665",
-    "type": "1463991450935"
+  "appname": "jsfiddle-demo",
+  "username": "7eJWHfD4P",
+  "password": "431d9cea-5219-4dfb-b798-f897f3a02665",
+  "type": "1463991450935"
 };
 
 var appbaseRef = new Appbase({
-              url: 'https://scalr.api.appbase.io',
-              appname: config.appname,
-              username: config.username,
-              password: config.password
+  url: 'https://scalr.api.appbase.io',
+  appname: config.appname,
+  username: config.username,
+  password: config.password
 });
 var requestObject = {
-              type: config.type,
-              body: {
-                  query: {
-                      match_all: {}
-                  }
-              }
+  type: config.type,
+  body: {
+    query: {
+      match_all: {}
+    }
+  }
 };
 
 
@@ -42396,11 +42396,11 @@ var Stats = React.createClass({displayName: "Stats",
       self.setState({ask: stream._source.ask});
 
 
-                  console.log(stream)
-                  console.log(stream._source.bid);
+      console.log(stream)
+      console.log(stream._source.bid);
 
-              }).on('error', function(error) {
-                  console.log('Error handling code');
+    }).on('error', function(error) {
+      console.log('Error handling code');
     });
 
     return {
@@ -42412,38 +42412,38 @@ var Stats = React.createClass({displayName: "Stats",
     };
   },
 
-    componentDidMount: function(){
+  componentDidMount: function(){
 
-      setInterval(function(){
+    setInterval(function(){
 
-      },1000);
-    },
+    },1000);
+  },
   render : function(){
 
     return (
       React.createElement("div", null, 
-          React.createElement("div", {className: "bid-center"}, 
-            React.createElement("p", {className: "label-text"}, "BID")
-            ), 
-            React.createElement("center", null, React.createElement("div", {id: "odometer", className: "odometer odometer-theme-digital"}, this.state.bid
-            )), 
+      React.createElement("div", {className: "bid-center"}, 
+      React.createElement("p", {className: "label-text"}, "BID")
+      ), 
+      React.createElement("center", null, React.createElement("div", {id: "odometer", className: "odometer odometer-theme-digital"}, this.state.bid
+      )), 
 
-          React.createElement("div", {className: "col-md-6"}, 
-            React.createElement("p", {className: "label-text"}, "LAST"), 
-            React.createElement("p", {className: "val", id: "avg"}, this.state.last)
-          ), 
-          React.createElement("div", {className: "col-md-6"}, 
-            React.createElement("p", {className: "label-text"}, "AVG OF 24 HRS"), 
-            React.createElement("p", {className: "val", id: "avg"}, this.state.avg)
-          ), 
-          React.createElement("div", {className: "col-md-6"}, 
-            React.createElement("p", {className: "label-text"}, "TOTAL"), 
-            React.createElement("p", {className: "val", id: "avg"}, this.state.total)
-          ), 
-          React.createElement("div", {className: "col-md-6"}, 
-            React.createElement("p", {className: "label-text"}, "ASK"), 
-            React.createElement("p", {className: "val", id: "avg"}, this.state.ask)
-          )
+      React.createElement("div", {className: "col-md-6"}, 
+      React.createElement("p", {className: "label-text"}, "LAST"), 
+      React.createElement("p", {className: "val", id: "avg"}, this.state.last)
+      ), 
+      React.createElement("div", {className: "col-md-6"}, 
+      React.createElement("p", {className: "label-text"}, "AVG OF 24 HRS"), 
+      React.createElement("p", {className: "val", id: "avg"}, this.state.avg)
+      ), 
+      React.createElement("div", {className: "col-md-6"}, 
+      React.createElement("p", {className: "label-text"}, "TOTAL"), 
+      React.createElement("p", {className: "val", id: "avg"}, this.state.total)
+      ), 
+      React.createElement("div", {className: "col-md-6"}, 
+      React.createElement("p", {className: "label-text"}, "ASK"), 
+      React.createElement("p", {className: "val", id: "avg"}, this.state.ask)
+      )
       )
     )
   }
@@ -42482,15 +42482,14 @@ var SidePanel = React.createClass({displayName: "SidePanel",
   render: function() {
     return (
 
-        React.createElement("div", {className: ""}, 
-
-            React.createElement("div", {className: "row"}, 
-              React.createElement("div", {className: "col-md-6"}, 
-                React.createElement(Stats, null)
-              )
-            ), 
-            React.createElement(SignInForm, null)
-        )
+      React.createElement("div", {className: ""}, 
+      React.createElement("div", {className: "row"}, 
+      React.createElement("div", {className: "col-md-6"}, 
+      React.createElement(Stats, null)
+      )
+      ), 
+      React.createElement(SignInForm, null)
+      )
     )
   }
 
