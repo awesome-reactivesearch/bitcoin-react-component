@@ -42334,14 +42334,16 @@ var SignIpForm = React.createClass({displayName: "SignIpForm",
     return (
       React.createElement("div", {className: "row max", id: "main"}, 
       React.createElement("br", null), 
+      React.createElement("form", null, 
       React.createElement("select", {id: "select_type", className: "form-control small"}, 
       React.createElement("option", {value: "lessthan"}, "Lesser Than"), 
       React.createElement("option", {value: "greaterthan"}, "Greater Than"), 
       React.createElement("option", {value: "fixvalue"}, "Fix Value")
       ), 
-      React.createElement("input", {type: "text", className: "form-control small", placeholder: "Enter Value", id: "upperprice"}), React.createElement("br", null), 
-      React.createElement("input", {className: "form-control big", placeholder: "E-mail", name: "email", type: "text"}), React.createElement("br", null), 
+      React.createElement("input", {type: "text", className: "form-control small", placeholder: "Enter Value", id: "upperprice", required: true}), React.createElement("br", null), 
+      React.createElement("input", {type: "email", className: "form-control big", placeholder: "E-mail", name: "email", required: true}), React.createElement("br", null), 
       React.createElement("input", {type: "submit", value: "Submit", className: "btn btn-primary"})
+      )
       )
     )
   }
