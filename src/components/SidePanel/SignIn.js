@@ -88,7 +88,7 @@ var SignIpForm = React.createClass({
       </select>
       <input type="text" className="form-control small" ref="input1" placeholder="Enter Value" id="upperprice" value={this.state.price} onChange={this.handleChange} required/><br/>
       <input type="email" className="form-control big" placeholder="E-mail" name="email" required/><br/>
-      <input type="submit" value="Submit" id="submit" className="btn btn-primary" onClick={this.handleClick}/>
+      <input type="submit" value="Submit" id="submit" className="btn btn-primary" onClick={this.handleClick}/><br/>
       </div>
     )
   }

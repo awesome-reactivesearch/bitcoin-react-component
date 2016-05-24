@@ -42416,7 +42416,7 @@ var SignIpForm = React.createClass({displayName: "SignIpForm",
       ), 
       React.createElement("input", {type: "text", className: "form-control small", ref: "input1", placeholder: "Enter Value", id: "upperprice", value: this.state.price, onChange: this.handleChange, required: true}), React.createElement("br", null), 
       React.createElement("input", {type: "email", className: "form-control big", placeholder: "E-mail", name: "email", required: true}), React.createElement("br", null), 
-      React.createElement("input", {type: "submit", value: "Submit", id: "submit", className: "btn btn-primary", onClick: this.handleClick})
+      React.createElement("input", {type: "submit", value: "Submit", id: "submit", className: "btn btn-primary", onClick: this.handleClick}), React.createElement("br", null)
       )
     )
   }
