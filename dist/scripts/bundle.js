@@ -42348,43 +42348,53 @@ var SignIpForm = React.createClass({displayName: "SignIpForm",
     return {
       price: '0',
       opt: 'lessthan',
-      greaterprice: '',
-      lessprice: ''
+      greaterprice: '0',
+      lessprice: '0'
     }
   },
   handleClick: function(){
     var self = this;
     if (self.state.opt == 'lessthan') {
       self.setState({greaterprice: 0});
-      self.setState({lessprice: self.state.price})
+      self.setState({lessprice: this.state.price});
     }
     else if (self.state.opt == 'greaterthan') {
       self.setState({greaterprice: self.state.price});
-      self.setState({lessprice: 1000})
+      self.setState({lessprice: 1000});
     }
     else {
       self.setState({greaterprice: self.state.price});
       self.setState({lessprice: self.state.price})
     }
+    var temp = {
+      "query":{
+        "range" : {
+          "last" : {
+            "gte" : self.state.greaterprice,
+            "lte" : self.state.lessprice
+          }
+        }
+      }
+    }
+    console.log("",temp);
       appbaseRef.searchStreamToURL({
         type: config.type,
         body:{
           "query":{
             "range" : {
               "last" : {
-                "gte" : '{self.state.greaterprice}',
-                "lte" : '{self.state.lessprice}'
+                "gte" : self.state.greaterprice,
+                "lte" : self.state.lessprice
               }
             }
           }
         }
       },{
         'method': 'POST',
-        'url': 'http://requestb.in/rmqj4rrm',
+        'url': 'http://requestb.in/1apjgju1',
         "count":1
       }).on('data', function(response) {
           console.log("Webhook has been configured : ", response);
-          console.log(self.state.price);
       }).on('error', function(error) {
           console.log("searchStreamToURL() failed with: ", error)
       });
@@ -42399,12 +42409,12 @@ var SignIpForm = React.createClass({displayName: "SignIpForm",
     return (
       React.createElement("div", {className: "row max", id: "main"}, 
       React.createElement("br", null), 
-      React.createElement("select", {id: "select_type", className: "form-control small", value: this.state.opt, onChange: this.handleChange}, 
+      React.createElement("select", {id: "select_type", ref: "opt1", className: "form-control small", value: this.state.opt, onChange: this.handleChange}, 
       React.createElement("option", {value: "lessthan"}, "Lesser Than"), 
       React.createElement("option", {value: "greaterthan"}, "Greater Than"), 
       React.createElement("option", {value: "fixvalue"}, "Fix Value")
       ), 
-      React.createElement("input", {type: "text", className: "form-control small", placeholder: "Enter Value", id: "upperprice", value: this.state.price, onChange: this.handleChange, required: true}), React.createElement("br", null), 
+      React.createElement("input", {type: "text", className: "form-control small", ref: "input1", placeholder: "Enter Value", id: "upperprice", value: this.state.price, onChange: this.handleChange, required: true}), React.createElement("br", null), 
       React.createElement("input", {type: "email", className: "form-control big", placeholder: "E-mail", name: "email", required: true}), React.createElement("br", null), 
       React.createElement("input", {type: "submit", value: "Submit", id: "submit", className: "btn btn-primary", onClick: this.handleClick})
       )
