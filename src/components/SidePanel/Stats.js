@@ -36,8 +36,7 @@ var Stats = React.createClass({
       self.setState({ask: stream._source.ask});
 
 
-      console.log(stream)
-      console.log(stream._source.bid);
+      console.log(stream._source.last);
 
     }).on('error', function(error) {
       console.log('Error handling code');

@@ -25,25 +25,35 @@ var SignIpForm = React.createClass({
     }
   },
   handleClick: function(){
+    console.log(this.refs.input1.getDOMNode().value)
     var self = this;
+    var lte;
+    var gte;
+    console.log(self.state.opt)
     if (self.state.opt == 'lessthan') {
+      gte = 0
+      lte =this.refs.input1.getDOMNode().value
       self.setState({greaterprice: 0});
-      self.setState({lessprice: this.state.price});
+      self.setState({lessprice: self.refs.input1});
     }
     else if (self.state.opt == 'greaterthan') {
-      self.setState({greaterprice: self.state.price});
+      lte = 1000
+      gte =this.refs.input1.getDOMNode().value
+      self.setState({greaterprice: self.refs.input1});
       self.setState({lessprice: 1000});
     }
     else {
-      self.setState({greaterprice: self.state.price});
-      self.setState({lessprice: self.state.price})
+      gte = this.refs.input1.getDOMNode().value
+      lte =this.refs.input1.getDOMNode().value
+      self.setState({greaterprice: self.refs.input1});
+      self.setState({lessprice: self.refs.input1})
     }
     var temp = {
       "query":{
         "range" : {
           "last" : {
-            "gte" : self.state.greaterprice,
-            "lte" : self.state.lessprice
+            "gte" : gte,
+            "lte" : lte
           }
         }
       }
@@ -55,15 +65,15 @@ var SignIpForm = React.createClass({
           "query":{
             "range" : {
               "last" : {
-                "gte" : self.state.greaterprice,
-                "lte" : self.state.lessprice
+                "gte" : parseFloat(gte),
+                "lte" : parseFloat(lte)
               }
             }
           }
         }
       },{
         'method': 'POST',
-        'url': 'http://requestb.in/1apjgju1',
+        'url': 'http://requestb.in/1874f2q1',
         "count":1
       }).on('data', function(response) {
           console.log("Webhook has been configured : ", response);
@@ -72,9 +82,10 @@ var SignIpForm = React.createClass({
       });
   },
   handleChange: function(){
+    console.log(this.refs.opt1.getDOMNode().value)
     this.setState({
-      price: event.target.price,
-      opt: event.target.opt
+      price: event.target.input,
+      opt: this.refs.opt1.getDOMNode().value
     });
   },
   render : function() {
@@ -89,6 +100,7 @@ var SignIpForm = React.createClass({
       <input type="text" className="form-control small" ref="input1" placeholder="Enter Value" id="upperprice" value={this.state.price} onChange={this.handleChange} required/><br/>
       <input type="email" className="form-control big" placeholder="E-mail" name="email" required/><br/>
       <input type="submit" value="Submit" id="submit" className="btn btn-primary" onClick={this.handleClick}/><br/>
+
       </div>
     )
   }
