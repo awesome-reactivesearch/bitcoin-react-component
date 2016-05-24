@@ -56,7 +56,7 @@ var SignIpForm = React.createClass({
         "count":1
       }).on('data', function(response) {
           console.log("Webhook has been configured : ", response);
-          console.log("hey",self.state.price);
+          console.log(self.state.price);
       }).on('error', function(error) {
           console.log("searchStreamToURL() failed with: ", error)
       });
