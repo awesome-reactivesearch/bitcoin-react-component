@@ -1,7 +1,6 @@
 var React = require("react");
-var Appbase = require("appbase-js");
-var appbaseRef = require("../appbase").appbaseRef;
-var config = require("../appbase").config;
+var appbaseRef = require("./appbase").appbaseRef;
+var config = require("./appbase").config;
 
 var requestObject = {
   type: config.type,
@@ -37,9 +36,10 @@ var Stats = React.createClass({
   },
   render: function(){
     return (
-      <div>
-        <div className="bid-center">
-          <p className="label-text">BID</p>
+      <div className="row">
+        <div className="col-md-6">
+          <div className="bid-center">
+            <p className="label-text">BID</p>
           </div>
           <center>
             <div id="odometer" className="odometer odometer-theme-digital">
@@ -62,6 +62,7 @@ var Stats = React.createClass({
             <p className="label-text">ASK</p>
             <p className="val" id="avg">{this.state.ask}</p>
           </div>
+        </div>
       </div>
     )
   }

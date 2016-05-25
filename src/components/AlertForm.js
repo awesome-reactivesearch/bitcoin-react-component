@@ -1,6 +1,6 @@
 var React = require('react');
-var stat = require('./Stats.js');
-var appbaseRef = require("../appbase").appbaseRef;
+var appbaseRef = require("./appbase").appbaseRef;
+var config = require("./appbase").config;
 
 var AlertForm = React.createClass({
   getInitialState: function(){
