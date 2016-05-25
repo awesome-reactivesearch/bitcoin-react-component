@@ -1,6 +1,8 @@
 var React = require("react");
 var Appbase = require("appbase-js");
 var appbaseRef = require("../appbase").appbaseRef;
+var config = require("../appbase").config;
+
 var requestObject = {
   type: config.type,
   body: {
@@ -13,6 +15,15 @@ var requestObject = {
 var Stats = React.createClass({
 
   getInitialState: function(){
+    return {
+      bid: "0",
+      last: "0",
+      avg: "0",
+      total: "0",
+      ask: "0"
+    };
+  },
+  componentDidMount: function(){
     var self = this;
 
     appbaseRef.searchStream(requestObject).on('data', function(stream) {

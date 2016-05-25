@@ -13,3 +13,4 @@ var appbaseRef = new Appbase({
 });
 
 exports.appbaseRef = appbaseRef;
+exports.config = config;
