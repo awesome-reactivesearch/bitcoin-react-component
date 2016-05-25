@@ -5,14 +5,13 @@ var SidePanel = React.createClass({
 
   render: function() {
     return (
-
       <div className="">
-      <div className="row">
-      <div className="col-md-6">
-      <Stats />
-      </div>
-      </div>
-      <SignInForm />
+        <div className="row">
+          <div className="col-md-6">
+            <Stats />
+          </div>
+        </div>
+        <SignInForm />
       </div>
     )
   }
