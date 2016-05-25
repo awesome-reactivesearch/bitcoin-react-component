@@ -6,10 +6,10 @@ body{
 }
 .odometer {
     font-size: 50px;
-		position: fixed;
-		margin-left: -20%;
-		border-radius: 5px;
-		border: .1em solid rgba(139, 245, 165, 0.4);
+	position: fixed;
+	margin-left: -20%;
+	border-radius: 5px;
+	border: .1em solid rgba(139, 245, 165, 0.4);
     border-top-width: 0.1em;
     border-right-width: 0.1em;
     border-bottom-width: 0.1em;
