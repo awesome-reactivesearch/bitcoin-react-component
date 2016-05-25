@@ -1,5 +1,5 @@
 var React = require("react");
-var SignInForm = require("./SignIn");
+var AlertForm = require("./AlertForm");
 var Stats = require("./Stats");
 var SidePanel = React.createClass({
 
@@ -11,7 +11,7 @@ var SidePanel = React.createClass({
             <Stats />
           </div>
         </div>
-        <SignInForm />
+        <AlertForm />
       </div>
     )
   }
