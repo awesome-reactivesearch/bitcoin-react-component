@@ -1,19 +1,19 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Stats = require("./components/Stats");
+var AlertForm = require("./components/AlertForm");
 
-var SidePanel = require("./components/SidePanel");
-
-
-var App = React.createClass({
-	render : function() {
+var Bitcoin = React.createClass({
+	render: function() {
 		return (
 			<div className="Main">
 				<div className="container">
-					<SidePanel />
+					<Stats />
+					<AlertForm />
 				</div>
 			</div>
 		)
 	}
 });
-ReactDOM.render(<App />,
+ReactDOM.render(<Bitcoin />,
 	document.getElementById('app'));
