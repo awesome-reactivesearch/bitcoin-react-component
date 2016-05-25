@@ -1,4 +1,6 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
+
 var SidePanel = require("./components/SidePanel");
 
 
@@ -13,5 +15,5 @@ var App = React.createClass({
 		)
 	}
 });
-React.render(<App />,
+ReactDOM.render(<App />,
 	document.getElementById('app'));
