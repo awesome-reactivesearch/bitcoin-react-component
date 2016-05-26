@@ -30,6 +30,7 @@ var Stats = React.createClass({
       self.setState({avg: stream._source['24h_avg']});
       self.setState({total: stream._source.total_vol});
       self.setState({ask: stream._source.ask});
+      self.props.onPriceChange(stream._source)
     }).on('error', function(error) {
       console.log('Error handling code');
     });
