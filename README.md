@@ -1,12 +1,5 @@
-# react-starter
-starter project for react
-
----
-
-+ Uses browserify
-+ Gulp connect server for live reload
-
----
+# Bitcoin Price tracker component
+It is react component for tracking bitcoin prices and setting an email alert on them.
 
 # install using 
 
