@@ -6,6 +6,9 @@ var requestObject = {
   type: config.type,
   body: {
     size: 1,
+    sort : [
+        { timestamp : "desc" }
+    ],
     query: {
       match_all: {}
     }
