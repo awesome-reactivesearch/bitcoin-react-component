@@ -13,7 +13,6 @@ var Bitcoin = React.createClass({
             <div>
                 <Stats onPriceChange={this.handlePriceChange} />
                 <BitcoinChart />
-                <AlertForm />
             </div>
         )
     }
