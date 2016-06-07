@@ -32498,6 +32498,7 @@ var requestObject = {
     sort : [
         { timestamp : "desc" }
     ],
+    size: 1000,
     query: {
       match_all: {}
     }
