@@ -63,6 +63,7 @@ var Stats = React.createClass({
             <p className="label-text">ASK</p>
             <p className="val" id="avg">{this.state.ask}</p>
           </div>
+          <h5> <i className="spinner"> </i> Listening</h5>
         </div>
       </div>
     )
