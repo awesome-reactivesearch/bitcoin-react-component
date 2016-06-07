@@ -5,6 +5,7 @@ var config = require("./appbase").config;
 var requestObject = {
   type: config.type,
   body: {
+    size: 1,
     query: {
       match_all: {}
     }
@@ -24,16 +25,22 @@ var Stats = React.createClass({
   },
   componentDidMount: function(){
     var self = this;
-    appbaseRef.searchStream(requestObject).on('data', function(stream) {
-      self.setState({bid: stream._source.bid});
-      self.setState({last: stream._source.last});
-      self.setState({avg: stream._source['24h_avg']});
-      self.setState({total: stream._source.total_vol});
-      self.setState({ask: stream._source.ask});
-      self.props.onPriceChange(stream._source)
-    }).on('error', function(error) {
-      console.log('Error handling code');
-    });
+    appbaseRef.search(requestObject).on('data', function(res) {
+      self.updatePrice(res.hits.hits[0]._source)
+      appbaseRef.searchStream(requestObject).on('data', function(stream) {
+        self.updatePrice(stream._source)
+      }).on('error', function(error) {
+        console.log('Error handling code');
+      });
+    })
+  },
+  updatePrice: function(data){
+    this.setState({bid: data.bid});
+    this.setState({last: data.last});
+    this.setState({avg: data['24h_avg']});
+    this.setState({total: data.total_vol});
+    this.setState({ask: data.ask});
+    this.props.onPriceChange(data)
   },
   render: function(){
     return (
