@@ -38,7 +38,7 @@ var Stats = React.createClass({
   render: function(){
     return (
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-12">
           <div className="bid-center">
             <p className="label-text">BID</p>
           </div>
