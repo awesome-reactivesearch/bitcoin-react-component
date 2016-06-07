@@ -7,7 +7,7 @@ var AlertForm = React.createClass({
     return {
       price: '0',
       email: '',
-      selectValue: ''
+      selectValue: 'lte'
     }
   },
   setWebhook: function(){
