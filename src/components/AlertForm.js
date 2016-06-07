@@ -28,26 +28,18 @@ var AlertForm = React.createClass({
       gteParam = price
       lteParam = price
     }
-    appbaseRef.searchStreamToURL({
-      type: config.type,
-      body:{
-        "query":{
-          "range" : {
-            "last" : {
-              "gte" : parseFloat(gteParam),
-              "lte" : parseFloat(lteParam)
-            }
-          }
-        }
+    var data = {
+      gteParam: gteParam,
+      lteParam: lteParam,
+      email: email
+    }
+    $.ajax({
+      type: "POST",
+      url: 'http://localhost:5001/alert',
+      data: data,
+      success: function(){
+        console.log('yo')
       }
-    },{
-      'method': 'POST',
-      'url': 'http://requestb.in/1874f2q1',
-      "count": 1
-    }).on('data', function(response) {
-        console.log("Webhook has been configured : ", response);
-    }).on('error', function(error) {
-        console.log("searchStreamToURL() failed with: ", error)
     });
   },
   handlePriceChange: function(event){
