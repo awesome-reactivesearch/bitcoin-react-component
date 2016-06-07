@@ -32442,8 +32442,7 @@ var Bitcoin = React.createClass({displayName: "Bitcoin",
         return (
             React.createElement("div", null, 
                 React.createElement(Stats, {onPriceChange: this.handlePriceChange}), 
-                React.createElement(BitcoinChart, null), 
-                React.createElement(AlertForm, null)
+                React.createElement(BitcoinChart, null)
             )
         )
     }
@@ -32511,7 +32510,6 @@ var BitcoinChart = React.createClass({displayName: "BitcoinChart",
     var self = this;
     appbaseRef.search(requestObject).on('data', function(res) {
       var hits = []
-      console.log(res.hits.hits)
       var chart = self.refs.stockchart.getChart();
       res.hits.hits.map(function(hit) {
         var x = (new Date(hit._source.timestamp)).getTime(), // current time
@@ -32550,6 +32548,10 @@ var config = require("./appbase").config;
 var requestObject = {
   type: config.type,
   body: {
+    size: 1,
+    sort : [
+        { timestamp : "desc" }
+    ],
     query: {
       match_all: {}
     }
@@ -32569,16 +32571,22 @@ var Stats = React.createClass({displayName: "Stats",
   },
   componentDidMount: function(){
     var self = this;
-    appbaseRef.searchStream(requestObject).on('data', function(stream) {
-      self.setState({bid: stream._source.bid});
-      self.setState({last: stream._source.last});
-      self.setState({avg: stream._source['24h_avg']});
-      self.setState({total: stream._source.total_vol});
-      self.setState({ask: stream._source.ask});
-      self.props.onPriceChange(stream._source)
-    }).on('error', function(error) {
-      console.log('Error handling code');
-    });
+    appbaseRef.search(requestObject).on('data', function(res) {
+      self.updatePrice(res.hits.hits[0]._source)
+      appbaseRef.searchStream(requestObject).on('data', function(stream) {
+        self.updatePrice(stream._source)
+      }).on('error', function(error) {
+        console.log('Error handling code');
+      });
+    })
+  },
+  updatePrice: function(data){
+    this.setState({bid: data.bid});
+    this.setState({last: data.last});
+    this.setState({avg: data['24h_avg']});
+    this.setState({total: data.total_vol});
+    this.setState({ask: data.ask});
+    this.props.onPriceChange(data)
   },
   render: function(){
     return (

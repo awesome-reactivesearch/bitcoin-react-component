@@ -57,7 +57,6 @@ var BitcoinChart = React.createClass({
     var self = this;
     appbaseRef.search(requestObject).on('data', function(res) {
       var hits = []
-      console.log(res.hits.hits)
       var chart = self.refs.stockchart.getChart();
       res.hits.hits.map(function(hit) {
         var x = (new Date(hit._source.timestamp)).getTime(), // current time
