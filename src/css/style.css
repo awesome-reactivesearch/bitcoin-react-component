@@ -33,19 +33,8 @@ body{
     border-image-repeat: stretch stretch;
 }
 
-.small {
-
-	width:20%;
-	display: inline-block;
-	margin: 0.5%;
-}
-.big{
-	width: 41%;
-	display: inline-block;;
-	margin: 0.5%;
-}
 .btn{
-	width: 41%;
+	width: 100%;
 	display: inline-block;;
 	margin: 0.5%;
 }
