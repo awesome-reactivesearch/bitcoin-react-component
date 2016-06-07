@@ -1,9 +1,9 @@
 var Appbase = require("appbase-js");
 var config = {
-  "appname": "jsfiddle-demo",
-  "username": "7eJWHfD4P",
-  "password": "431d9cea-5219-4dfb-b798-f897f3a02665",
-  "type": "1463991450935"
+  "appname": "bitcoin-price-monitoring",
+  "username": "Fww0TsmAN",
+  "password": "41d86ed1-d2b9-4797-9310-724a8a650b80",
+  "type": "prices"
 };
 var appbaseRef = new Appbase({
   url: 'https://scalr.api.appbase.io',
