@@ -7,13 +7,13 @@ var data = []
 var chartConfig = {
   rangeSelector: {
     buttons: [{
-      count: 1,
-      type: 'minute',
-      text: '1M'
-    }, {
       count: 5,
       type: 'minute',
       text: '5M'
+    }, {
+      count: 60,
+      type: 'minute',
+      text: '60M'
     }, {
       type: 'all',
       text: 'All'
@@ -27,7 +27,7 @@ var chartConfig = {
   },
 
   xAxis: {
-    minRange: 60 * 1000 // one minute
+    minRange: 60 * 1000 * 2// Two minute
   },
   exporting: {
     enabled: false
@@ -71,7 +71,6 @@ var BitcoinChart = React.createClass({
       appbaseRef.searchStream(requestObject).on('data', function(stream) {
         var x = (new Date()).getTime(), // current time
           y = stream._source.last
-
         hits.push([x, y])
         chart.series[0].setData(hits)
       }).on('error', function(error) {
