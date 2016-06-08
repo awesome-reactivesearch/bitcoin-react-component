@@ -39,6 +39,7 @@ var chartConfig = {
   }]
 }
 
+// Get 1000 records with desc sorted timestamp
 var requestObject = {
   type: config.type,
   body: {
@@ -51,38 +52,41 @@ var requestObject = {
     }
   }
 };
+
+// Use the local time on the x-axis
 ReactHighstock.Highcharts.setOptions({
     global: {
-        // timezoneOffset: +1,
         useUTC: false
     }
 });
+
 var BitcoinChart = React.createClass({
 
   componentDidMount: function() {
     var self = this;
     appbaseRef.search(requestObject).on('data', function(res) {
-      var hits = []
+      var hits = [];
       var chart = self.refs.stockchart.getChart();
       res.hits.hits.map(function(hit) {
         var x = (new Date(hit._source.timestamp)).getTime(), // current time
-          y = hit._source.last
-        hits.push([x, y])
+          y = hit._source.last;
+        hits.push([x, y]);
       })
 
       // Highchart expects data to be sorted
-      hits = hits.sort()
+      hits = hits.sort();
       chart.series[0].setData(hits)
+
       appbaseRef.searchStream(requestObject).on('data', function(stream) {
         var x = (new Date()).getTime(), // current time
           y = stream._source.last
         hits.push([x, y])
         chart.series[0].setData(hits)
       }).on('error', function(error) {
-        console.log("<br>Query error: ", JSON.stringify(error))
+        console.log("<br>Stream error: ", JSON.stringify(error))
       });
     }).on('error', function(error) {
-      console.log("<br>Query error: ", JSON.stringify(error))
+      console.log("<br>Search error: ", JSON.stringify(error))
     });
   },
   render: function() {

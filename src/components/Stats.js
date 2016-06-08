@@ -2,6 +2,7 @@ var React = require("react");
 var appbaseRef = require("./appbase").appbaseRef;
 var config = require("./appbase").config;
 
+// Request object for fetching the last record
 var requestObject = {
   type: config.type,
   body: {
