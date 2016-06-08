@@ -51,7 +51,12 @@ var requestObject = {
     }
   }
 };
-
+ReactHighstock.Highcharts.setOptions({
+    global: {
+        // timezoneOffset: +1,
+        useUTC: false
+    }
+});
 var BitcoinChart = React.createClass({
 
   componentDidMount: function() {
