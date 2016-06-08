@@ -32601,7 +32601,8 @@ var Stats = React.createClass({displayName: "Stats",
             React.createElement("p", {className: "label-text"}, "BID"), 
             React.createElement("div", {id: "odometer", className: "odometer odometer-theme-digital"}, 
               this.state.bid
-            )
+            ), 
+            React.createElement("br", null), React.createElement("br", null)
         ), 
         React.createElement("div", {className: "col-md-6"}, 
           React.createElement("p", {className: "label-text"}, "LAST"), 

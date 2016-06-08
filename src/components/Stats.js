@@ -53,6 +53,7 @@ var Stats = React.createClass({
             <div id="odometer" className="odometer odometer-theme-digital">
               {this.state.bid}
             </div>
+            <br /><br />
         </div>
         <div className="col-md-6">
           <p className="label-text">LAST</p>
