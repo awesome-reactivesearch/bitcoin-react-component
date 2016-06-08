@@ -32596,34 +32596,30 @@ var Stats = React.createClass({displayName: "Stats",
   },
   render: function(){
     return (
-      React.createElement("div", {className: "row"}, 
+      React.createElement("div", {className: "row text-center"}, 
         React.createElement("div", {className: "col-md-12"}, 
-          React.createElement("div", {className: "bid-center"}, 
-            React.createElement("p", {className: "label-text"}, "BID")
-          ), 
-          React.createElement("center", null, 
+            React.createElement("p", {className: "label-text"}, "BID"), 
             React.createElement("div", {id: "odometer", className: "odometer odometer-theme-digital"}, 
               this.state.bid
             )
-          ), 
-          React.createElement("div", {className: "col-md-6"}, 
-            React.createElement("p", {className: "label-text"}, "LAST"), 
-            React.createElement("p", {className: "val", id: "avg"}, this.state.last)
-          ), 
-          React.createElement("div", {className: "col-md-6"}, 
-            React.createElement("p", {className: "label-text"}, "AVG OF 24 HRS"), 
-            React.createElement("p", {className: "val", id: "avg"}, this.state.avg)
-          ), 
-          React.createElement("div", {className: "col-md-6"}, 
-            React.createElement("p", {className: "label-text"}, "TOTAL"), 
-            React.createElement("p", {className: "val", id: "avg"}, this.state.total)
-          ), 
-          React.createElement("div", {className: "col-md-6"}, 
-            React.createElement("p", {className: "label-text"}, "ASK"), 
-            React.createElement("p", {className: "val", id: "avg"}, this.state.ask)
-          ), 
-          React.createElement("h5", null, " ", React.createElement("i", {className: "spinner"}, " "), " Listening")
-        )
+        ), 
+        React.createElement("div", {className: "col-md-6"}, 
+          React.createElement("p", {className: "label-text"}, "LAST"), 
+          React.createElement("p", {className: "val", id: "avg"}, this.state.last)
+        ), 
+        React.createElement("div", {className: "col-md-6"}, 
+          React.createElement("p", {className: "label-text"}, "AVG OF 24 HRS"), 
+          React.createElement("p", {className: "val", id: "avg"}, this.state.avg)
+        ), 
+        React.createElement("div", {className: "col-md-6"}, 
+          React.createElement("p", {className: "label-text"}, "TOTAL"), 
+          React.createElement("p", {className: "val", id: "avg"}, this.state.total)
+        ), 
+        React.createElement("div", {className: "col-md-6"}, 
+          React.createElement("p", {className: "label-text"}, "ASK"), 
+          React.createElement("p", {className: "val", id: "avg"}, this.state.ask)
+        ), 
+        React.createElement("h5", null, " ", React.createElement("i", {className: "spinner"}, " "), " Listening")
       )
     )
   }

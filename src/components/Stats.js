@@ -47,34 +47,30 @@ var Stats = React.createClass({
   },
   render: function(){
     return (
-      <div className="row">
+      <div className="row text-center">
         <div className="col-md-12">
-          <div className="bid-center">
             <p className="label-text">BID</p>
-          </div>
-          <center>
             <div id="odometer" className="odometer odometer-theme-digital">
               {this.state.bid}
             </div>
-          </center>
-          <div className="col-md-6">
-            <p className="label-text">LAST</p>
-            <p className="val" id="avg">{this.state.last}</p>
-          </div>
-          <div className="col-md-6">
-            <p className="label-text">AVG OF 24 HRS</p>
-            <p className="val" id="avg">{this.state.avg}</p>
-          </div>
-          <div className="col-md-6">
-            <p className="label-text">TOTAL</p>
-            <p className="val" id="avg">{this.state.total}</p>
-          </div>
-          <div className="col-md-6">
-            <p className="label-text">ASK</p>
-            <p className="val" id="avg">{this.state.ask}</p>
-          </div>
-          <h5> <i className="spinner"> </i> Listening</h5>
         </div>
+        <div className="col-md-6">
+          <p className="label-text">LAST</p>
+          <p className="val" id="avg">{this.state.last}</p>
+        </div>
+        <div className="col-md-6">
+          <p className="label-text">AVG OF 24 HRS</p>
+          <p className="val" id="avg">{this.state.avg}</p>
+        </div>
+        <div className="col-md-6">
+          <p className="label-text">TOTAL</p>
+          <p className="val" id="avg">{this.state.total}</p>
+        </div>
+        <div className="col-md-6">
+          <p className="label-text">ASK</p>
+          <p className="val" id="avg">{this.state.ask}</p>
+        </div>
+        <h5> <i className="spinner"> </i> Listening</h5>
       </div>
     )
   }
