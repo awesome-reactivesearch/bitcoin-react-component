@@ -43,12 +43,12 @@ var chartConfig = {
 var requestObject = {
   type: config.type,
   body: {
-    sort : [
-        { timestamp : "desc" }
-    ],
     size: 1000,
     query: {
       match_all: {}
+    },
+    sort: {
+      timestamp: "desc"
     }
   }
 };

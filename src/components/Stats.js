@@ -7,11 +7,11 @@ var requestObject = {
   type: config.type,
   body: {
     size: 1,
-    sort : [
-        { timestamp : "desc" }
-    ],
     query: {
       match_all: {}
+    },
+    sort: {
+      timestamp: "desc"
     }
   }
 };
@@ -30,8 +30,10 @@ var Stats = React.createClass({
   componentDidMount: function(){
     var self = this;
     appbaseRef.search(requestObject).on('data', function(res) {
+      // We fetch the last price data here, it will be returned in the res.hits.hits array.
       self.updatePrice(res.hits.hits[0]._source)
       appbaseRef.searchStream(requestObject).on('data', function(stream) {
+        // We subscribe to the last price value via searchStream method
         self.updatePrice(stream._source)
       }).on('error', function(error) {
         console.log('Error handling code');
