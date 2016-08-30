@@ -38,7 +38,7 @@ var AlertForm = React.createClass({
       url: 'http://localhost:5001/alert',
       data: data,
       success: function(){
-        console.log('yo')
+        console.log('Webhook configured!')
       }
     });
   },
@@ -60,7 +60,9 @@ var AlertForm = React.createClass({
   render : function() {
     return (
       <div className="row max" id="main">
-      <br />
+        <br />
+        <h2 className="text-center"> Set an alert </h2>
+        <br />
         <div className="col-md-6">
           <select ref="conditionSelect" className="form-control" value={this.state.selectValue} onChange={this.handleSelectChange}>
             <option value="lte">Lesser Than</option>
