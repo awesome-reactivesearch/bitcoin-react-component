@@ -32344,26 +32344,115 @@ function extend() {
 
 },{}],242:[function(require,module,exports){
 var React = require('react');
+var appbaseRef = require("./appbase").appbaseRef;
+var config = require("./appbase").config;
+
+var AlertForm = React.createClass({displayName: "AlertForm",
+  getInitialState: function(){
+    return {
+      price: '0',
+      email: '',
+      selectValue: 'lte'
+    }
+  },
+  setWebhook: function(){
+    var lteParam;
+    var gteParam;
+    var price = this.state.price
+    var selectValue = this.state.selectValue
+    var email = this.state.email
+    if (selectValue == 'lte') {
+      gteParam = 0
+      lteParam = price
+    }
+    else if (selectValue == 'gte') {
+      lteParam = 1000
+      gteParam =price
+    }
+    else {
+      gteParam = price
+      lteParam = price
+    }
+    var data = {
+      gteParam: gteParam,
+      lteParam: lteParam,
+      email: email
+    }
+    $.ajax({
+      type: "POST",
+      url: 'http://localhost:5001/alert',
+      data: data,
+      success: function(){
+        console.log('Webhook configured!')
+      }
+    });
+  },
+  handlePriceChange: function(event){
+    this.setState({
+      price: event.target.value,
+    });
+  },
+  handleEmailChange: function(event){
+    this.setState({
+      email: event.target.value,
+    });
+  },
+  handleSelectChange: function(event){
+    this.setState({
+      selectValue: event.target.value
+    });
+  },
+  render : function() {
+    return (
+      React.createElement("div", {className: "row max", id: "main"}, 
+        React.createElement("br", null), 
+        React.createElement("h2", {className: "text-center"}, " Set an alert "), 
+        React.createElement("br", null), 
+        React.createElement("div", {className: "col-md-6"}, 
+          React.createElement("select", {ref: "conditionSelect", className: "form-control", value: this.state.selectValue, onChange: this.handleSelectChange}, 
+            React.createElement("option", {value: "lte"}, "Lesser Than"), 
+            React.createElement("option", {value: "gte"}, "Greater Than"), 
+            React.createElement("option", {value: "fixvalue"}, "Fix Value")
+          )
+        ), 
+        React.createElement("div", {className: "col-md-6"}, 
+          React.createElement("input", {type: "text", className: "form-control", placeholder: "Enter price", value: this.state.price, onChange: this.handlePriceChange, required: true}), React.createElement("br", null)
+        ), 
+        React.createElement("div", {className: "col-md-12"}, 
+          React.createElement("input", {type: "email", className: "form-control", placeholder: "Enter email address", value: this.state.email, onChange: this.handleEmailChange, required: true}), React.createElement("br", null)
+        ), 
+        React.createElement("div", {className: "col-md-6 col-md-offset-3"}, 
+          React.createElement("input", {type: "submit", className: "btn btn-primary", onClick: this.setWebhook}), React.createElement("br", null)
+        )
+      )
+    )
+  }
+});
+module.exports = AlertForm;
+},{"./appbase":246,"react":215}],243:[function(require,module,exports){
+var React = require('react');
 var Stats = require("./Stats");
+var AlertForm = require("./AlertForm");
 var BitcoinChart = require("./BitcoinChart");
 
 var Bitcoin = React.createClass({displayName: "Bitcoin",
     handlePriceChange: function(priceObject){
+        // console.log(priceObject)
         // Logic for handling the price change goes here
     },
     render: function() {
         return (
             React.createElement("div", null, 
                 React.createElement(Stats, {onPriceChange: this.handlePriceChange}), 
-                React.createElement(BitcoinChart, null)
+                React.createElement(BitcoinChart, null), 
+                React.createElement(AlertForm, null)
             )
         )
     }
 });
 
 module.exports = Bitcoin;
-
-},{"./BitcoinChart":243,"./Stats":244,"react":215}],243:[function(require,module,exports){
+},{"./AlertForm":242,"./BitcoinChart":244,"./Stats":245,"react":215}],244:[function(require,module,exports){
 var React = require("react");
 var appbaseRef = require("./appbase").appbaseRef;
 var config = require("./appbase").config;
@@ -32409,12 +32498,12 @@ var chartConfig = {
 var requestObject = {
   type: config.type,
   body: {
-    sort : [
-        { timestamp : "desc" }
-    ],
     size: 1000,
     query: {
       match_all: {}
+    },
+    sort: {
+      timestamp: "desc"
     }
   }
 };
@@ -32462,7 +32551,7 @@ var BitcoinChart = React.createClass({displayName: "BitcoinChart",
   }
 });
 module.exports = BitcoinChart;
-},{"./appbase":245,"react":215,"react-highcharts/bundle/ReactHighstock":50}],244:[function(require,module,exports){
+},{"./appbase":246,"react":215,"react-highcharts/bundle/ReactHighstock":50}],245:[function(require,module,exports){
 var React = require("react");
 var appbaseRef = require("./appbase").appbaseRef;
 var config = require("./appbase").config;
@@ -32472,11 +32561,11 @@ var requestObject = {
   type: config.type,
   body: {
     size: 1,
-    sort : [
-        { timestamp : "desc" }
-    ],
     query: {
       match_all: {}
+    },
+    sort: {
+      timestamp: "desc"
     }
   }
 };
@@ -32495,8 +32584,10 @@ var Stats = React.createClass({displayName: "Stats",
   componentDidMount: function(){
     var self = this;
     appbaseRef.search(requestObject).on('data', function(res) {
+      // We fetch the last price data here, it will be returned in the res.hits.hits array.
       self.updatePrice(res.hits.hits[0]._source)
       appbaseRef.searchStream(requestObject).on('data', function(stream) {
+        // We subscribe to the last price value via searchStream method
         self.updatePrice(stream._source)
       }).on('error', function(error) {
         console.log('Error handling code');
@@ -32543,7 +32634,7 @@ var Stats = React.createClass({displayName: "Stats",
   }
 });
 module.exports = Stats;
-},{"./appbase":245,"react":215}],245:[function(require,module,exports){
+},{"./appbase":246,"react":215}],246:[function(require,module,exports){
 var Appbase = require("appbase-js");
 var config = {
   "appname": "bitcoin-price-monitoring",
@@ -32561,11 +32652,11 @@ var appbaseRef = new Appbase({
 exports.appbaseRef = appbaseRef;
 exports.config = config;
 
-},{"appbase-js":13}],246:[function(require,module,exports){
+},{"appbase-js":13}],247:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Bitcoin = require("./components/Bitcoin");
 
 ReactDOM.render(React.createElement(Bitcoin, null),
 	document.getElementById('bitcoin'));
-},{"./components/Bitcoin":242,"react":215,"react-dom":49}]},{},[246]);
+},{"./components/Bitcoin":243,"react":215,"react-dom":49}]},{},[247]);
