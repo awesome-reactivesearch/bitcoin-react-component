@@ -1,5 +1,6 @@
 var React = require('react');
 var Stats = require("./Stats");
+var AlertForm = require("./AlertForm");
 var BitcoinChart = require("./BitcoinChart");
 
 var Bitcoin = React.createClass({
@@ -11,6 +12,7 @@ var Bitcoin = React.createClass({
             <div>
                 <Stats onPriceChange={this.handlePriceChange} />
                 <BitcoinChart />
+                <AlertForm />
             </div>
         )
     }
